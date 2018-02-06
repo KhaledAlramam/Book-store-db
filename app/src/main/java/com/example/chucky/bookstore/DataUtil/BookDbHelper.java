@@ -25,11 +25,12 @@ public class BookDbHelper extends SQLiteOpenHelper {
         //Create Books table string
         String SQL_CREATE_ENTRIES =
                 "CREATE TABLE " + BooksContract.BooksEntry.TABLE_NAME + " (" +
-                        BooksEntry.COLUMN_PRODUCT_NAME + " TEXT," +
+                        BooksEntry._ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
+                        BooksEntry.COLUMN_PRODUCT_NAME + " TEXT, " +
                         BooksEntry.COLUMN_PRICE + " TEXT," +
-                        BooksEntry.COLUMN_QUANTITY + " INTEGER," +
-                        BooksEntry.COLUMN_SUPPLIER_NAME + " TEXT," +
-                        BooksEntry.COLUMN_SUPPLIER_EMAIL + " TEXT," +
+                        BooksEntry.COLUMN_QUANTITY + " INTEGER, " +
+                        BooksEntry.COLUMN_SUPPLIER_NAME + " TEXT, " +
+                        BooksEntry.COLUMN_SUPPLIER_EMAIL + " TEXT, " +
                         BooksEntry.COLUMN_SUPPLIER_PHONE_NUMBER + " TEXT);";
         db.execSQL(SQL_CREATE_ENTRIES);
     }

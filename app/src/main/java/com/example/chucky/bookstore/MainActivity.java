@@ -3,6 +3,7 @@ package com.example.chucky.bookstore;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
@@ -35,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         values.put(BooksEntry.COLUMN_SUPPLIER_NAME,"John");
         values.put(BooksEntry.COLUMN_SUPPLIER_EMAIL,"example@test.com");
         values.put(BooksEntry.COLUMN_SUPPLIER_PHONE_NUMBER,"002121212");
-        long newId=db.insert(BooksEntry.TABLE_NAME,null,values);
-        Toast.makeText(this,String.valueOf(newId),Toast.LENGTH_SHORT).show();
+        Uri newId=getContentResolver().insert(BooksEntry.CONTENT_URI,values);
+        Toast.makeText(this,String.valueOf(newId), Toast.LENGTH_SHORT).show();
     }
 
     public Cursor queryData(){

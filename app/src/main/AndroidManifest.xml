@@ -16,6 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name=".DataUtil.InventoryProvider"
+            android:authorities="com.example.chucky.bookstore"
+            android:exported="false" />
+
+        <activity android:name=".EditorActivity"></activity>
     </application>
 
 </manifest>
