@@ -27,7 +27,7 @@ public class BookDbHelper extends SQLiteOpenHelper {
                 "CREATE TABLE " + BooksContract.BooksEntry.TABLE_NAME + " (" +
                         BooksEntry._ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
                         BooksEntry.COLUMN_PRODUCT_NAME + " TEXT, " +
-                        BooksEntry.COLUMN_PRICE + " TEXT," +
+                        BooksEntry.COLUMN_PRICE + " INTEGER," +
                         BooksEntry.COLUMN_QUANTITY + " INTEGER, " +
                         BooksEntry.COLUMN_SUPPLIER_NAME + " TEXT, " +
                         BooksEntry.COLUMN_SUPPLIER_EMAIL + " TEXT, " +

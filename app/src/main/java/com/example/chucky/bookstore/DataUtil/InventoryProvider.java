@@ -64,6 +64,7 @@ public class InventoryProvider extends ContentProvider {
             default:
                 throw new IllegalArgumentException("Can't query Unknwon Uri " + uri);
         }
+        cursor.setNotificationUri(getContext().getContentResolver(),uri);
         return cursor;
     }
 
@@ -131,6 +132,7 @@ public class InventoryProvider extends ContentProvider {
         SQLiteDatabase dp=mDpHelper.getWritableDatabase();
         switch (match){
             case BOOKS:
+                getContext().getContentResolver().notifyChange(uri, null);
                 return dp.delete(BooksEntry.TABLE_NAME,selection,selectionArgs);
             case BOOK_ID:
                 selection=BooksEntry._ID+"=?";
@@ -144,6 +146,7 @@ public class InventoryProvider extends ContentProvider {
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String selection, @Nullable String[] selectionArgs) {
         SQLiteDatabase dp=mDpHelper.getWritableDatabase();
+        getContext().getContentResolver().notifyChange(uri, null);
         return dp.update(BooksEntry.TABLE_NAME,contentValues,selection,selectionArgs);
     }
 
