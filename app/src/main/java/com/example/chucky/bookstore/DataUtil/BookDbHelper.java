@@ -25,7 +25,7 @@ public class BookDbHelper extends SQLiteOpenHelper {
         //Create Books table string
         String SQL_CREATE_ENTRIES =
                 "CREATE TABLE " + BooksContract.BooksEntry.TABLE_NAME + " (" +
-                        BooksEntry._ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
+                        BooksEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         BooksEntry.COLUMN_PRODUCT_NAME + " TEXT, " +
                         BooksEntry.COLUMN_PRICE + " INTEGER," +
                         BooksEntry.COLUMN_QUANTITY + " INTEGER, " +
@@ -40,7 +40,6 @@ public class BookDbHelper extends SQLiteOpenHelper {
         //Delete Books table string
         String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXISTS " + BooksEntry.TABLE_NAME;
-
         db.execSQL(SQL_DELETE_ENTRIES);
         onCreate(db);
     }

@@ -22,7 +22,7 @@ public class InventoryProvider extends ContentProvider {
     public static final String LOG_TAG = InventoryProvider.class.getSimpleName();
     public static final int BOOKS = 100;
     public static final int BOOK_ID = 101;
-
+    private BookDbHelper mDpHelper;
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
     static {
@@ -32,7 +32,6 @@ public class InventoryProvider extends ContentProvider {
                 BooksContract.PATH_BOOKS + "/#", BOOK_ID);
     }
 
-    private BookDbHelper mDpHelper;
 
     @Override
     public boolean onCreate() {
@@ -45,9 +44,7 @@ public class InventoryProvider extends ContentProvider {
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection
             , @Nullable String[] selectionArgs, @Nullable String sortOrder) {
         SQLiteDatabase dp = mDpHelper.getReadableDatabase();
-
         Cursor cursor;
-
         int match = sUriMatcher.match(uri);
         switch (match) {
             case BOOKS:
@@ -64,7 +61,7 @@ public class InventoryProvider extends ContentProvider {
             default:
                 throw new IllegalArgumentException("Can't query Unknwon Uri " + uri);
         }
-        cursor.setNotificationUri(getContext().getContentResolver(),uri);
+        cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
 
@@ -99,8 +96,8 @@ public class InventoryProvider extends ContentProvider {
         if (name == null) {
             throw new IllegalArgumentException("Book name required..!");
         }
-        int price=contentValues.getAsInteger(BooksEntry.COLUMN_PRICE);
-        if (price==0){
+        int price = contentValues.getAsInteger(BooksEntry.COLUMN_PRICE);
+        if (price == 0) {
             throw new IllegalArgumentException("Price can't be 0");
         }
         String supName = contentValues.getAsString(BooksEntry.COLUMN_SUPPLIER_NAME);
@@ -128,26 +125,42 @@ public class InventoryProvider extends ContentProvider {
 
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
-        int match=sUriMatcher.match(uri);
-        SQLiteDatabase dp=mDpHelper.getWritableDatabase();
-        switch (match){
+        int match = sUriMatcher.match(uri);
+        int rowsDeleted;
+        SQLiteDatabase dp = mDpHelper.getWritableDatabase();
+        switch (match) {
             case BOOKS:
-                getContext().getContentResolver().notifyChange(uri, null);
-                return dp.delete(BooksEntry.TABLE_NAME,selection,selectionArgs);
+                rowsDeleted = dp.delete(BooksEntry.TABLE_NAME, selection, selectionArgs);
+                break;
             case BOOK_ID:
-                selection=BooksEntry._ID+"=?";
-                selectionArgs=new String[]{String.valueOf(ContentUris.parseId(uri))};
-                return dp.delete(BooksEntry.TABLE_NAME,selection,selectionArgs);
+                selection = BooksEntry._ID + "=?";
+                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
+                rowsDeleted = dp.delete(BooksEntry.TABLE_NAME, selection, selectionArgs);
+                break;
             default:
                 throw new IllegalArgumentException("Deletion is not supported for " + uri);
         }
+        getContext().getContentResolver().notifyChange(uri, null);
+        return rowsDeleted;
     }
 
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String selection, @Nullable String[] selectionArgs) {
-        SQLiteDatabase dp=mDpHelper.getWritableDatabase();
+        int match = sUriMatcher.match(uri);
+        SQLiteDatabase dp = mDpHelper.getWritableDatabase();
+        int rows = 0;
+        switch (match) {
+            case BOOKS:
+                rows = dp.update(BooksEntry.TABLE_NAME, contentValues, selection, selectionArgs);
+                break;
+            case BOOK_ID:
+                selection = BooksEntry._ID + " =?";
+                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
+                rows = dp.update(BooksEntry.TABLE_NAME, contentValues, selection, selectionArgs);
+                break;
+        }
         getContext().getContentResolver().notifyChange(uri, null);
-        return dp.update(BooksEntry.TABLE_NAME,contentValues,selection,selectionArgs);
+        return rows;
     }
 
 }
