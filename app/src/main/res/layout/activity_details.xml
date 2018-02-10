@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundd">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.example.chucky.bookstore.EditorActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/text_view_edit_activity"
+                android:text="@string/book_title" />
+
+            <TextView
+                android:id="@+id/details_book"
+                style="@style/text_view_edit_activity"
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimary" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/text_view_edit_activity"
+                android:text="@string/price" />
+
+            <TextView
+                android:id="@+id/details_price"
+                style="@style/text_view_edit_activity"
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimary" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/text_view_edit_activity"
+                android:text="@string/quantity" />
+
+            <TextView
+                android:id="@+id/details_quantity"
+                style="@style/text_view_edit_activity"
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimary" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/text_view_edit_activity"
+                android:text="@string/pub_name" />
+
+            <TextView
+                android:id="@+id/details_pub"
+                style="@style/text_view_edit_activity"
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimary" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/text_view_edit_activity"
+                android:text="@string/pub_num" />
+
+            <TextView
+                android:id="@+id/details_pup_num"
+                style="@style/text_view_edit_activity"
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/text_view_edit_activity"
+                android:text="@string/publisher_email" />
+
+            <TextView
+                android:id="@+id/details_pup_email"
+                style="@style/text_view_edit_activity"
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimary" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/call"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@color/colorPrimary"
+            android:text="Call supplier" />
+
+        <Button
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@color/colorPrimary"
+            android:text="Email supplier" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+
+            <Button
+                android:id="@+id/details_restock"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:background="@color/colorPrimary"
+                android:text="Restock" />
+
+            <Button
+                android:id="@+id/details_sell"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@color/colorPrimary"
+                android:text="Sell" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/details_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:background="@color/delete"
+            android:text="Delete" />
+    </LinearLayout>
+
+</ScrollView>

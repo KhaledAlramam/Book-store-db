@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.chucky.bookstore.DataUtil.BooksContract.BooksEntry;
@@ -31,7 +30,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     EditText pubNAmeEdit;
     EditText pubEmailEdit;
     EditText pubNumberEdit;
-    RelativeLayout sellNBuy;
     Button sell;
     Button buy;
     Button delete;
@@ -43,25 +41,16 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         setContentView(R.layout.activity_editor);
         currentBookUri = getIntent().getData();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        if (currentBookUri != null) {
-            sellNBuy = findViewById(R.id.sell_n_buy);
-            sell = findViewById(R.id.editor_sell);
-            buy = findViewById(R.id.editor_restock);
-            delete = findViewById(R.id.editor_delete);
-            showEditors();
-            getLoaderManager().initLoader(EDITOR_LOADER, null, this);
-        }
+        sell = findViewById(R.id.editor_sell);
+        buy = findViewById(R.id.editor_restock);
+        delete = findViewById(R.id.editor_delete);
+        getLoaderManager().initLoader(EDITOR_LOADER, null, this);
         titleEdit = findViewById(R.id.title_edit);
         priceEdit = findViewById(R.id.price_edit);
         quantityEdit = findViewById(R.id.quantity_edit);
         pubNAmeEdit = findViewById(R.id.publisher_name_edit);
         pubEmailEdit = findViewById(R.id.publisher_email_edit);
         pubNumberEdit = findViewById(R.id.publisher_num_edit);
-        if (currentBookUri == null) {
-            setTitle("Add a book");
-        } else {
-            setTitle("Edit book");
-        }
     }
 
     @Override
@@ -80,12 +69,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         values.put(BooksEntry.COLUMN_SUPPLIER_NAME, String.valueOf(pubNAmeEdit.getText()));
         values.put(BooksEntry.COLUMN_SUPPLIER_PHONE_NUMBER, String.valueOf(pubNumberEdit.getText()));
         values.put(BooksEntry.COLUMN_SUPPLIER_EMAIL, String.valueOf(pubEmailEdit.getText()));
-        if (item.getItemId() == R.id.save && currentBookUri == null) {
-            if (!checkErrors()) {
-                getContentResolver().insert(BooksEntry.CONTENT_URI, values);
-                finish();
-            }
-        } else if (item.getItemId() == R.id.save && currentBookUri != null) {
+        if (item.getItemId() == R.id.save) {
             if (!checkErrors()) {
                 getContentResolver().update(currentBookUri, values, null, null);
                 finish();
@@ -189,8 +173,4 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         return false;
     }
 
-    public void showEditors() {
-        sellNBuy.setVisibility(View.VISIBLE);
-        delete.setVisibility(View.VISIBLE);
-    }
 }

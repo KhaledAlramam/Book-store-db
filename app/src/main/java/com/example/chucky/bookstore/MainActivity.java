@@ -49,24 +49,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         getLoaderManager().initLoader(LOADER_ID, null, this);
     }
 
-    public Cursor queryAllData() {
-        String[] projection = {
-                BooksEntry._ID,
-                BooksEntry.COLUMN_PRODUCT_NAME,
-                BooksEntry.COLUMN_PRICE,
-                BooksEntry.COLUMN_QUANTITY,
-                BooksEntry.COLUMN_SUPPLIER_NAME,
-                BooksEntry.COLUMN_SUPPLIER_EMAIL,
-                BooksEntry.COLUMN_SUPPLIER_PHONE_NUMBER
-        };
-        Cursor cursor = getContentResolver().query(BooksEntry.CONTENT_URI,
-                projection,
-                null,
-                null,
-                null);
-        return cursor;
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -77,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.add_book) {
-            Intent intent = new Intent(MainActivity.this, EditorActivity.class);
+            Intent intent = new Intent(MainActivity.this, NewBook.class);
             startActivity(intent);
         } else if (item.getItemId() == R.id.delete_all_books) {
             getContentResolver().delete(BooksEntry.CONTENT_URI, null, null);

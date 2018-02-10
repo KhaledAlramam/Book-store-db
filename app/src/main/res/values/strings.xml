@@ -8,4 +8,8 @@
     <string name="pub_name">Publisher name</string>
     <string name="pub_num">Publisher number</string>
     <string name="publisher_email">Publisher Email</string>
+    <string name="no_items">No items found in inventory, click add a book to add a new one</string>
+    <string name="edit">Edit book</string>
+    <string name="sell">Sell a copy</string>
+    <string name="details">Book details</string>
 </resources>

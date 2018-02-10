@@ -77,7 +77,16 @@
         </LinearLayout>
     </LinearLayout>
 
-
+    <TextView
+        android:id="@+id/details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:text="@string/details"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
     <TextView
         android:id="@+id/sell"
         android:layout_width="match_parent"
@@ -85,7 +94,7 @@
         android:layout_margin="5dp"
         android:background="@color/colorPrimaryDark"
         android:gravity="center"
-        android:text="Sell"
+        android:text="@string/sell"
         android:textColor="#FFFFFF"
         android:textSize="20sp" />
 

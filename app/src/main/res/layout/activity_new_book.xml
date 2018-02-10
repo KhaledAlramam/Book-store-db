@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/backgroundd">
+    android:layout_height="match_parent">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -16,12 +15,11 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/book_title"
                 style="@style/text_view_edit_activity"
                 android:text="@string/book_title" />
 
             <EditText
-                android:id="@+id/title_edit"
+                android:id="@+id/title_new"
                 style="@style/edit_text_edit_activity"
                 android:hint="Name here"
                 android:inputType="textCapSentences" />
@@ -32,13 +30,11 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/book_price"
                 style="@style/text_view_edit_activity"
                 android:text="@string/price" />
 
             <EditText
-                android:hint="Price"
-                android:id="@+id/price_edit"
+                android:id="@+id/price_new"
                 style="@style/edit_text_edit_activity"
                 android:inputType="number" />
         </LinearLayout>
@@ -48,13 +44,11 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/quantity"
                 style="@style/text_view_edit_activity"
                 android:text="@string/quantity" />
 
             <EditText
-                android:hint="Quantity available"
-                android:id="@+id/quantity_edit"
+                android:id="@+id/quantity_new"
                 style="@style/edit_text_edit_activity"
                 android:inputType="number" />
         </LinearLayout>
@@ -64,13 +58,11 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/publisher_name"
                 style="@style/text_view_edit_activity"
                 android:text="@string/pub_name" />
 
             <EditText
-                android:hint="Name"
-                android:id="@+id/publisher_name_edit"
+                android:id="@+id/publisher_name_new"
                 style="@style/edit_text_edit_activity"
                 android:inputType="textCapSentences" />
         </LinearLayout>
@@ -80,14 +72,11 @@
             android:layout_height="wrap_content">
 
             <TextView
-
-                android:id="@+id/publisher_num"
                 style="@style/text_view_edit_activity"
                 android:text="@string/pub_num" />
 
             <EditText
-                android:hint="Phone number"
-                android:id="@+id/publisher_num_edit"
+                android:id="@+id/publisher_num_new"
                 style="@style/edit_text_edit_activity"
                 android:inputType="phone" />
         </LinearLayout>
@@ -97,46 +86,15 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/publisher_email"
                 style="@style/text_view_edit_activity"
                 android:text="@string/publisher_email" />
 
             <EditText
-                android:hint="E-mail"
-                android:id="@+id/publisher_email_edit"
+                android:id="@+id/publisher_email_new"
                 style="@style/edit_text_edit_activity"
                 android:inputType="textEmailAddress" />
         </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/sell_n_buy"
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:layout_alignParentRight="true"
-                android:id="@+id/editor_sell"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sell"
-                android:background="@color/colorPrimaryDark"/>
-            <Button
-                android:layout_alignParentLeft="true"
-                android:id="@+id/editor_restock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Restock"
-                android:background="@color/colorPrimaryDark"/>
-        </RelativeLayout>
-
-        <Button
-            android:id="@+id/editor_delete"
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="delete"
-            android:background="@color/colorPrimaryDark"/>
     </LinearLayout>
 
 
